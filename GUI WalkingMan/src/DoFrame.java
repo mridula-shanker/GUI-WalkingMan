@@ -29,7 +29,6 @@ public class DoFrame extends JFrame implements ActionListener
 			
 			addKeyListener(new KeyListener()
 					{
-						@Override
 						public void keyPressed(KeyEvent e) 
 						{
 							if(e.getKeyCode()== KeyEvent.VK_UP)
@@ -49,7 +48,6 @@ public class DoFrame extends JFrame implements ActionListener
 								wide=-5;
 							}
 						}
-						@Override
 						public void keyReleased(KeyEvent e) 
 						{
 							if(e.getKeyCode()== KeyEvent.VK_UP)
@@ -69,7 +67,6 @@ public class DoFrame extends JFrame implements ActionListener
 								wide=0;
 							}	
 						}
-						@Override
 						public void keyTyped(KeyEvent arg0) 
 						{
 						}

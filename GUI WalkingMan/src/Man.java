@@ -6,6 +6,7 @@ import java.awt.geom.Ellipse2D;
 
 import javax.swing.JComponent;
 
+@SuppressWarnings("serial")
 public class Man extends JComponent
 {
 	private Ellipse2D.Double head;
