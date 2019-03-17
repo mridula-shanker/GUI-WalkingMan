@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
+@SuppressWarnings("serial")
 public class DoFrame extends JFrame implements ActionListener
 {
 	int height;

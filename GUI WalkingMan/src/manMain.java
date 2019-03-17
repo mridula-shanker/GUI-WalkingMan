@@ -1,35 +1,38 @@
+/**
+ * Mridula Shanker
+ * Period 6
+ */
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
 public class manMain extends JFrame implements ActionListener {
+
 	Man person = new Man(10, 10);
-	// ArrayList<Ball> balls = new ArrayList<Ball>();
+	ArrayList<Ball> balls = new ArrayList<Ball>();
 	
 
 	public manMain() {
-		JFrame myFrame = new JFrame();
-		myFrame.setLayout(null);
-		myFrame.setBounds(100, 100, 600, 600);// X,Y,Width,Height
+ 		setLayout(null);
+		setBounds(100, 100, 600, 600);// X,Y,Width,Height
 
-		myFrame.add(person);
+		add(person);
 		person.setLocation(300, 300);
-		final Ball ball1 = new Ball();
-		myFrame.add(ball1);
 		
-
-		myFrame.setVisible(true);
-		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		Timer t1 = new Timer(10, this);
 		t1.start();
 
-		myFrame.addKeyListener(new KeyListener() {
-
+		addKeyListener(new KeyListener() {
+			@Override
 			public void keyPressed(KeyEvent e) {
 				{
 
@@ -68,19 +71,10 @@ public class manMain extends JFrame implements ActionListener {
 							person.setDy(0);
 						}
 					}
-					if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-						ball1.setBounds(70, 70, 100, 100);
-						//int pos =0;
-						//while(pos<=70){
-							ball1.setLocation(person.getX()+10,person.getY());
-							ball1.update();
-							//pos++;
-						//}//repaint();
-					}
 				}
 
 			}
-
+			@Override
 			public void keyReleased(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 					person.setDx(0);
@@ -100,19 +94,31 @@ public class manMain extends JFrame implements ActionListener {
 				
 
 			}
-
-			public void keyTyped(KeyEvent arg0) {
-				// TODO Auto-generated method stub
-
+			
+			@Override
+			public void keyTyped(KeyEvent e) 
+			{
+				if(e.getKeyChar() == ' ') 
+				{
+					Ball ball1 = new Ball();
+					ball1.setBounds(100, 100, 600, 600);
+					ball1.setLocation(person.getX(), person.getY());
+					add(ball1);
+					balls.add(ball1);
+				}
 			}
-
 		});
-
 	}
-
+	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		person.update();
 		repaint();
+		
+		for(Ball b : balls) 
+		{
+			b.setLocation(b.getLocation().x + 10, b.getLocation().y);
+		}
+
 
 		if (person.getX() <= 0) {
 			person.setDx(0);
